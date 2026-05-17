@@ -1,0 +1,44 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 700,
+  "height": 500,
+  "title": "Australian Beef Cattle (2024–25)",
+
+  "data": {
+    "url": "../../data/1_Cattlenum_Chloropleth/Aus_States_TopoJSON.json",
+    "format": {
+      "type": "topojson",
+      "feature": "STE_2021_AUST_GDA2020"
+    }
+  },
+
+  "transform": [
+    {
+      "filter": "datum.Year == '2024-25'"
+    },
+    {
+      "lookup": "properties.STE_CODE21",
+      "from": {
+        "data": {
+          "url": "../../data/1_Cattlenum_Chloropleth/Australian_Beef_Cattle.csv"
+        },
+        "key": "Region codes",
+        "fields": ["Value"]
+      }
+    }
+  ],
+
+  "mark": "geoshape",
+
+  "encoding": {
+    "color": {
+      "field": "Value",
+      "type": "quantitative",
+      "title": "Beef cattle"
+    },
+    "tooltip": [
+      {"field": "properties.STE_NAME21", "type": "nominal", "title": "State"},
+      {"field": "Value", "type": "quantitative"}
+    ]
+  }
+}
