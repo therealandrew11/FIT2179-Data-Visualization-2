@@ -1,0 +1,27 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/therealandrew11/FIT2179-Data-Visualization-2/main/data/3_Dairy_Cattlenum/Dairy_Cattlenum.csv",
+    "format": {
+      "type": "csv"
+    }
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "sort": ["2019-20","2020-21","2021-22","2022-23","2023-24","2024-25"],
+      "title": "Year"
+    },
+    "y": {
+      "field": "Value",
+      "type": "quantitative",
+      "title": "Dairy Cattle (Number)"
+    },
+    "tooltip": [
+      {"field": "Year", "type": "ordinal"},
+      {"field": "Value", "type": "quantitative"}
+    ]
+  }
+}
