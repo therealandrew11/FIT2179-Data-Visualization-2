@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Australian Beef Cattle Visualisations</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+
+<body>
+
+  <h1>Australian Beef Cattle Data</h1>
+
+  <div id="map"></div>
+
+  <div id="linechart"></div>
+
+  <script>
+    vegaEmbed('#map', "./graphs/1_Cattlenum_Chloropleth.json");
+
+    vegaEmbed(
+      '#linechart',
+      "./graphs/2_State_Cattlenum_Percent_Change.vega"
+    );
+  </script>
+
+</body>
+</html>

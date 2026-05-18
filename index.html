@@ -1,30 +1,177 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Australian Beef Cattle Visualisations</title>
+  <title>Australian Beef Cattle Dashboard</title>
 
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: #f6f7f9;
+      color: #1f1f1f;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px;
+    }
+
+    header {
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin: 0 0 10px 0;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #555;
+      max-width: 850px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 30px;
+      margin-top: 30px;
+      align-items: start;
+    }
+
+    .panel {
+      background: white;
+      border-radius: 14px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+    h2 {
+      font-size: 20px;
+      margin-top: 0;
+    }
+
+    .insights li {
+      margin-bottom: 8px;
+    }
+
+    .chart {
+      background: white;
+      border-radius: 14px;
+      padding: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+    .section {
+      margin-top: 40px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 12px;
+      color: #777;
+    }
+
+    .divider {
+      height: 1px;
+      background: #e5e7eb;
+      margin: 30px 0;
+    }
+
+    /* NEW: two-column layout for trend + dairy */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 20px;
+      align-items: start;
+    }
+  </style>
 </head>
 
 <body>
 
-  <h1>Australian Beef Cattle Data</h1>
+<div class="container">
 
-  <div id="map"></div>
+  <!-- HEADER -->
+  <header>
+    <h1>Australian Beef Cattle Distribution and Change</h1>
+    <div class="subtitle">
+      Spatial and temporal patterns in beef cattle populations across Australian states
+      and territories (2019–20 to 2024–25).
+    </div>
+  </header>
 
-  <div id="linechart"></div>
+  <!-- MAP + TEXT -->
+  <div class="grid">
 
-  <script>
-    vegaEmbed('#map', "./graphs/1_Cattlenum_Chloropleth.json");
+    <div class="panel">
+      <h2>Key insights</h2>
+      <ul class="insights">
+        <li>Queensland dominates national herd size across all years.</li>
+        <li>Most regions grow until 2023–24, then soften.</li>
+        <li>Northern systems are more stable than southern regions.</li>
+        <li>Recent decline aligns with destocking conditions.</li>
+      </ul>
 
-    vegaEmbed(
-      '#linechart',
-      "./graphs/2_State_Cattlenum_Percent_Change.vega"
-    );
-  </script>
+      <div class="divider"></div>
+
+      <h2>Context</h2>
+      <p>
+        Australian beef cattle systems are strongly climate-dependent and
+        follow multi-year herd cycles driven by rainfall and pasture availability.
+      </p>
+    </div>
+
+    <div id="map" class="chart"></div>
+
+  </div>
+
+  <!-- TREND + DAIRY -->
+  <div class="section">
+
+    <div class="section-title">
+      Year-on-year change and dairy comparison
+    </div>
+
+    <div class="subtitle">
+      Percentage change in beef cattle populations (left) compared with dairy cattle distribution (right).
+    </div>
+
+    <div class="two-col">
+
+      <div id="trend" class="chart"></div>
+
+      <div id="dairy" class="chart"></div>
+
+    </div>
+
+  </div>
+
+  <footer>
+    Source: ABARES / Australian agricultural datasets.
+  </footer>
+
+</div>
+
+<script>
+  vegaEmbed("#map", "./graphs/1_Cattlenum_Chloropleth.json", { actions: false });
+
+  vegaEmbed("#trend", "./graphs/2_State_Cattlenum_Percent_Change.vega", { actions: false });
+
+  vegaEmbed("#dairy", "./graphs/3_Dairy_Cattlenum.vega", { actions: false });
+</script>
 
 </body>
 </html>
