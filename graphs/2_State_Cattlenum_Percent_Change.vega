@@ -1,0 +1,74 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 850,
+  "height": 450,
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/therealandrew11/FIT2179-Data-Visualization-2/refs/heads/main/data/1_Cattlenum_Chloropleth/Australian_Beef_Cattle.csv"
+  },
+
+  "transform": [
+    {
+      "window": [
+        {
+          "op": "lag",
+          "field": "Value",
+          "as": "PrevValue"
+        }
+      ],
+      "groupby": ["Region"],
+      "sort": [{"field": "Year"}]
+    },
+
+    {
+      "calculate": "((datum.Value - datum.PrevValue) / datum.PrevValue) * 100",
+      "as": "PctChange"
+    }
+  ],
+
+  "mark": {
+    "type": "line",
+    "point": true
+  },
+
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "sort": [
+        "2019-20",
+        "2020-21",
+        "2021-22",
+        "2022-23",
+        "2023-24",
+        "2024-25"
+      ],
+      "title": "Financial Year"
+    },
+
+    "y": {
+      "field": "PctChange",
+      "type": "quantitative",
+      "title": "Year-on-Year Change (%)"
+    },
+
+    "color": {
+      "field": "Region",
+      "type": "nominal",
+      "scale": {
+        "scheme": "tableau10"
+      }
+    },
+
+    "tooltip": [
+      {"field": "Region"},
+      {"field": "Year"},
+      {
+        "field": "PctChange",
+        "format": ".2f",
+        "title": "% Change"
+      }
+    ]
+  }
+}

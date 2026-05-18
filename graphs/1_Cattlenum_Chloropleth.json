@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 700,
   "height": 500,
-  "title": "Australian Beef Cattle (2024–25)",
+  "title": "Australian Beef Cattle per State (2024–25)",
 
   "projection": {"type": "mercator"},
 
@@ -43,8 +43,8 @@
     "color": {
       "field": "Value",
       "type": "quantitative",
-      "scale": {"type": "log"},
-      "title": "Number of Cattle (log)"
+      "scale": {"scheme": "greens","type": "log"},
+      "title": "Number of Cattle"
     },
     "tooltip": [
       {

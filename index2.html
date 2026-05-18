@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Australian Beef Cattle Dashboard</title>
+
+  <!-- Vega stack -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+  <!-- Simple professional styling -->
+  <style>
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: #f6f7f9;
+      color: #1f1f1f;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px;
+    }
+
+    header {
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin: 0 0 10px 0;
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #555;
+      max-width: 850px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 30px;
+      margin-top: 30px;
+      align-items: start;
+    }
+
+    .panel {
+      background: white;
+      border-radius: 14px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+    h2 {
+      font-size: 20px;
+      margin-top: 0;
+    }
+
+    .insights li {
+      margin-bottom: 8px;
+    }
+
+    .chart {
+      background: white;
+      border-radius: 14px;
+      padding: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+    .section {
+      margin-top: 40px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 12px;
+      color: #777;
+    }
+
+    .divider {
+      height: 1px;
+      background: #e5e7eb;
+      margin: 30px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <header>
+    <h1>Australian Beef Cattle Distribution and Change</h1>
+    <div class="subtitle">
+      Spatial and temporal patterns in beef cattle populations across Australian states
+      and territories (2019–20 to 2024–25). The dashboard combines geographic distribution
+      with year-on-year growth trends.
+    </div>
+  </header>
+
+  <!-- TOP SECTION -->
+  <div class="grid">
+
+    <!-- TEXT PANEL -->
+    <div class="panel">
+      <h2>Key insights</h2>
+      <ul class="insights">
+        <li>Queensland dominates national herd size across all observed years.</li>
+        <li>Most regions show growth up to 2023–24, followed by partial decline.</li>
+        <li>Southern states exhibit stronger volatility than northern grazing regions.</li>
+        <li>Recent downturn aligns with destocking and weaker seasonal conditions.</li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <h2>Context</h2>
+      <p>
+        Beef cattle numbers in Australia follow cyclical patterns driven by rainfall,
+        pasture availability, and herd rebuilding after drought periods. Changes in
+        herd size do not directly correspond to production output in the same year.
+      </p>
+    </div>
+
+    <!-- MAP -->
+    <div id="map" class="chart"></div>
+
+  </div>
+
+  <!-- TREND CHART -->
+  <div class="section">
+    <div class="section-title">Year-on-year percentage change</div>
+    <div class="subtitle">
+      Relative growth highlights regional differences that are less visible in absolute herd counts.
+    </div>
+
+    <div id="trend" class="chart"></div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    Source: Australian Bureau of Agricultural and Resource Economics and Sciences (ABARES) / ACLUMP datasets.
+  </footer>
+
+</div>
+
+<script>
+  // Map (choropleth)
+  vegaEmbed("#map", "./graphs/1_Cattlenum_Chloropleth.json", {
+    actions: false
+  });
+
+  // Line chart (percent change)
+  vegaEmbed("#trend", "./graphs/2_State_Cattlenum_Percent_Change.vega", {
+    actions: false
+  });
+</script>
+
+</body>
+</html>
