@@ -2,12 +2,12 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 700,
   "height": 500,
-  "title": "Australian Beef Cattle per State (2024–25)",
+  "title": "Australian Beef Cattle per Capita",
 
   "projection": {"type": "mercator"},
 
   "data": {
-    "url": "https://raw.githubusercontent.com/therealandrew11/FIT2179-Data-Visualization-2/refs/heads/main/data/1_Cattlenum_Chloropleth/Aus_States_TopoJSON.json",
+    "url": "https://raw.githubusercontent.com/therealandrew11/FIT2179-Data-Visualization-2/main/data/1_Cattlenum_Chloropleth/Aus_States_TopoJSON.json",
     "format": {
       "type": "topojson",
       "feature": "Aus States TopoJSON"
@@ -28,7 +28,7 @@
           "format": { "type": "csv" }
         },
         "key": "Region codes",
-        "fields": ["Value", "Year"]
+        "fields": ["Value", "Year", "Rate per person"]
       }
     },
 
@@ -41,11 +41,15 @@
 
   "encoding": {
     "color": {
-      "field": "Value",
+      "field": "Rate per person",
       "type": "quantitative",
-      "scale": {"scheme": "greens", "type": "log"},
+      "scale": {
+        "scheme": "greens",
+        "type": "log"
+      },
       "title": "Cattle per Capita"
     },
+
     "tooltip": [
       {
         "field": "properties.STE_NAME21",
@@ -54,7 +58,13 @@
       },
       {
         "field": "Value",
-        "type": "quantitative"
+        "type": "quantitative",
+        "title": "Total Cattle"
+      },
+      {
+        "field": "Rate per person",
+        "type": "quantitative",
+        "title": "Cattle per Capita"
       }
     ]
   }
