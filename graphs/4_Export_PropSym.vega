@@ -1,0 +1,61 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 700,
+  "height": 500,
+  "title": "Australian Beef Cattle per State (2024–25)",
+
+  "projection": {"type": "mercator"},
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/therealandrew11/FIT2179-Data-Visualization-2/refs/heads/main/data/1_Cattlenum_Chloropleth/Aus_States_TopoJSON.json",
+    "format": {
+      "type": "topojson",
+      "feature": "Aus States TopoJSON"
+    }
+  },
+
+  "transform": [
+    {
+      "calculate": "toString(datum.properties.STE_CODE21)",
+      "as": "state_code"
+    },
+
+    {
+      "lookup": "state_code",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/therealandrew11/FIT2179-Data-Visualization-2/refs/heads/main/data/1_Cattlenum_Chloropleth/Australian_Beef_Cattle.csv",
+          "format": { "type": "csv" }
+        },
+        "key": "Region codes",
+        "fields": ["Value", "Year"]
+      }
+    },
+
+    {
+      "filter": "datum.Year == '2024-25'"
+    }
+  ],
+
+  "mark": "geoshape",
+
+  "encoding": {
+    "color": {
+      "field": "Value",
+      "type": "quantitative",
+      "scale": {"scheme": "greens", "type": "log"},
+      "title": "Cattle per Capita"
+    },
+    "tooltip": [
+      {
+        "field": "properties.STE_NAME21",
+        "type": "nominal",
+        "title": "State"
+      },
+      {
+        "field": "Value",
+        "type": "quantitative"
+      }
+    ]
+  }
+}
