@@ -43,8 +43,8 @@
     "color": {
       "field": "Value",
       "type": "quantitative",
-      "scale": {"scheme": "greens","type": "log"},
-      "title": "Number of Cattle"
+      "scale": {"scheme": "greens", "type": "log"},
+      "title": "Cattle per Capita"
     },
     "tooltip": [
       {
