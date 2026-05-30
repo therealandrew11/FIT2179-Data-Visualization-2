@@ -2,60 +2,129 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 700,
   "height": 500,
-  "title": "Australian Beef Cattle per State (2024–25)",
+  "title": "Beef Cattle Raised by State, and Cattle Exported by Port",
+  "projection": { "type": "mercator" },
 
-  "projection": {"type": "mercator"},
-
-  "data": {
-    "url": "https://raw.githubusercontent.com/therealandrew11/FIT2179-Data-Visualization-2/refs/heads/main/data/1_Cattlenum_Chloropleth/Aus_States_TopoJSON.json",
-    "format": {
-      "type": "topojson",
-      "feature": "Aus States TopoJSON"
-    }
-  },
-
-  "transform": [
-    {
-      "calculate": "toString(datum.properties.STE_CODE21)",
-      "as": "state_code"
-    },
+  "layer": [
 
     {
-      "lookup": "state_code",
-      "from": {
-        "data": {
-          "url": "https://raw.githubusercontent.com/therealandrew11/FIT2179-Data-Visualization-2/refs/heads/main/data/1_Cattlenum_Chloropleth/Australian_Beef_Cattle.csv",
-          "format": { "type": "csv" }
-        },
-        "key": "Region codes",
-        "fields": ["Value", "Year"]
-      }
-    },
-
-    {
-      "filter": "datum.Year == '2024-25'"
-    }
-  ],
-
-  "mark": "geoshape",
-
-  "encoding": {
-    "color": {
-      "field": "Value",
-      "type": "quantitative",
-      "scale": {"scheme": "greens", "type": "log"},
-      "title": "Cattle per Capita"
-    },
-    "tooltip": [
-      {
-        "field": "properties.STE_NAME21",
-        "type": "nominal",
-        "title": "State"
+      "data": {
+        "url": "https://raw.githubusercontent.com/therealandrew11/FIT2179-Data-Visualization-2/refs/heads/main/data/1_Cattlenum_Chloropleth/Aus_States_TopoJSON.json",
+        "format": {
+          "type": "topojson",
+          "feature": "Aus States TopoJSON"
+        }
       },
-      {
-        "field": "Value",
-        "type": "quantitative"
+
+      "transform": [
+        {
+          "calculate": "toString(datum.properties.STE_CODE21)",
+          "as": "state_code"
+        },
+        {
+          "lookup": "state_code",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/therealandrew11/FIT2179-Data-Visualization-2/refs/heads/main/data/1_Cattlenum_Chloropleth/Australian_Beef_Cattle.csv"
+            },
+            "key": "Region codes",
+            "fields": ["Value", "Year"]
+          }
+        },
+        {
+          "filter": "datum.Year == '2024-25'"
+        }
+      ],
+
+      "mark": "geoshape",
+
+      "encoding": {
+        "color": {
+          "field": "Value",
+          "type": "quantitative",
+          "scale": { "scheme": "greens", "type": "log" },
+            "legend": {"title": "Number of Cattle"}
+        },
+        "tooltip": [
+          { "field": "properties.STE_NAME21", "type": "nominal" },
+          { "field": "Value", "type": "quantitative" }
+        ]
       }
-    ]
-  }
+    },
+
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/therealandrew11/FIT2179-Data-Visualization-2/refs/heads/main/data/4_Port_PropSym/Export%20Data.csv"
+      },
+
+      "transform": [
+        {
+          "calculate": "toNumber(replace(datum.Quantity, ',', ''))",
+          "as": "qty"
+        },
+        {
+          "aggregate": [
+            { "op": "sum", "field": "qty", "as": "total_export" }
+          ],
+          "groupby": ["Load Port"]
+        },
+        {
+          "lookup": "Load Port",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/therealandrew11/FIT2179-Data-Visualization-2/refs/heads/main/data/4_Port_PropSym/Port_Locations.csv"
+            },
+            "key": "Port",
+            "fields": ["Latitude", "Longitude"]
+          }
+        }
+      ],
+
+      "layer": [
+
+        {
+          "mark": {
+            "type": "circle",
+            "opacity": 0.75,
+            "stroke": "black",
+            "strokeWidth": 0.6
+          },
+
+          "encoding": {
+            "longitude": { "field": "Longitude", "type": "quantitative" },
+            "latitude": { "field": "Latitude", "type": "quantitative" },
+
+            "size": {
+              "field": "total_export",
+              "type": "quantitative",
+              "scale": { "range": [24, 3000] },
+              "legend": {"title": "Cattle Exported"}
+            },
+
+            "color": {
+              "field": "Load Port",
+              "type": "nominal",
+                "legend": null
+            }
+          }
+        },
+
+        {
+          "mark": {
+            "type": "text",
+            "dy": -16,
+            "fontSize": 11,
+            "fontWeight": "bold",
+            "color": "black"
+          },
+
+          "encoding": {
+            "longitude": { "field": "Longitude", "type": "quantitative" },
+            "latitude": { "field": "Latitude", "type": "quantitative" },
+            "text": { "field": "Load Port" }
+          }
+        }
+      ]
+    }
+  ]
 }
