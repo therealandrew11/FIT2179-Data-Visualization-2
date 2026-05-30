@@ -1,0 +1,102 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "title": {
+    "text": "Income and Costs of Australian Beef Specialist Farms"
+  },
+
+  "width": 750,
+  "height": 420,
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/therealandrew11/FIT2179-Data-Visualization-2/refs/heads/main/data/5_Farm_Size_Line/Profits%20Farm.csv"
+  },
+
+  "transform": [
+    {
+      "calculate": "toNumber(datum['Total cash receipts'])",
+      "as": "Income"
+    },
+    {
+      "calculate": "toNumber(datum['Total cash costs'])",
+      "as": "Costs"
+    },
+    {
+      "calculate": "datum.Income - datum.Costs",
+      "as": "Profit"
+    }
+  ],
+
+  "layer": [
+    {
+      "mark": {
+        "type": "area",
+        "opacity": 0.2
+      },
+      "encoding": {
+        "x": {
+          "field": "Financial year",
+          "type": "ordinal",
+          "sort": null,
+          "title": "Financial Year"
+        },
+        "y": {
+          "field": "Costs",
+          "type": "quantitative",
+          "title": "Average Cash Flow per Farm (A$)"
+        },
+        "y2": {
+          "field": "Income"
+        },
+        "tooltip": [
+          { "field": "Financial year" },
+          { "field": "Income", "title": "Income", "format": "," },
+          { "field": "Costs", "title": "Costs", "format": "," },
+          { "field": "Profit", "title": "Profit", "format": "," }
+        ]
+      }
+    },
+
+    {
+      "transform": [
+        {
+          "fold": ["Income", "Costs", "Profit"],
+          "as": ["Metric", "Value"]
+        }
+      ],
+      "mark": {
+        "type": "line",
+        "point": true,
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "x": {
+          "field": "Financial year",
+          "type": "ordinal",
+          "sort": null
+        },
+        "y": {
+          "field": "Value",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "Metric",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Income", "Costs", "Profit"],
+            "range": ["#2ca02c", "#d62728", "#1f77b4"]
+          },
+          "legend": {
+            "title": null,
+            "orient": "top"
+          }
+        },
+        "tooltip": [
+          { "field": "Financial year" },
+          { "field": "Metric" },
+          { "field": "Value", "format": "," }
+        ]
+      }
+    }
+  ]
+}
