@@ -1,0 +1,252 @@
+Category,Year,Value
+Energy,1989-90,297292
+Energy,1990-91,298973
+Energy,1991-92,305324
+Energy,1992-93,308547
+Energy,1993-94,309398
+Energy,1994-95,321923
+Energy,1995-96,328327
+Energy,1996-97,339554
+Energy,1997-98,353733
+Energy,1998-99,359229
+Energy,1999-00,368255
+Energy,2000-01,376133
+Energy,2001-02,379253
+Energy,2002-03,385328
+Energy,2003-04,395767
+Energy,2004-05,402282
+Energy,2005-06,408358
+Energy,2006-07,417271
+Energy,2007-08,422614
+Energy,2008-09,426937
+Energy,2009-10,421838
+Energy,2010-11,418849
+Energy,2011-12,423288
+Energy,2012-13,418072
+Energy,2013-14,410415
+Energy,2014-15,421808
+Energy,2015-16,431032
+Energy,2016-17,435074
+Energy,2017-18,437599
+Energy,2018-19,436061
+Energy,2019-20,421292
+Energy,2020-21,407142
+Energy,2021-22,401378
+Energy,2022-23,400014
+Energy,2023-24,398122
+
+Industrial Processes,1989-90,25113
+Industrial Processes,1990-91,24308
+Industrial Processes,1991-92,24883
+Industrial Processes,1992-93,24626
+Industrial Processes,1993-94,24874
+Industrial Processes,1994-95,24637
+Industrial Processes,1995-96,24343
+Industrial Processes,1996-97,24415
+Industrial Processes,1997-98,25468
+Industrial Processes,1998-99,25913
+Industrial Processes,1999-00,25762
+Industrial Processes,2000-01,26593
+Industrial Processes,2001-02,27053
+Industrial Processes,2002-03,29522
+Industrial Processes,2003-04,30821
+Industrial Processes,2004-05,30125
+Industrial Processes,2005-06,30610
+Industrial Processes,2006-07,32653
+Industrial Processes,2007-08,32668
+Industrial Processes,2008-09,30453
+Industrial Processes,2009-10,33496
+Industrial Processes,2010-11,34309
+Industrial Processes,2011-12,31962
+Industrial Processes,2012-13,29778
+Industrial Processes,2013-14,29759
+Industrial Processes,2014-15,30537
+Industrial Processes,2015-16,30602
+Industrial Processes,2016-17,31210
+Industrial Processes,2017-18,31788
+Industrial Processes,2018-19,32531
+Industrial Processes,2019-20,31945
+Industrial Processes,2020-21,32709
+Industrial Processes,2021-22,32950
+Industrial Processes,2022-23,33081
+Industrial Processes,2023-24,30841
+
+Agriculture,1989-90,89836
+Agriculture,1990-91,89251
+Agriculture,1991-92,86504
+Agriculture,1992-93,84167
+Agriculture,1993-94,84114
+Agriculture,1994-95,80891
+Agriculture,1995-96,82805
+Agriculture,1996-97,83867
+Agriculture,1997-98,83827
+Agriculture,1998-99,83715
+Agriculture,1999-00,86974
+Agriculture,2000-01,85724
+Agriculture,2001-02,85493
+Agriculture,2002-03,80299
+Agriculture,2003-04,83359
+Agriculture,2004-05,82732
+Agriculture,2005-06,81455
+Agriculture,2006-07,78058
+Agriculture,2007-08,75385
+Agriculture,2008-09,75362
+Agriculture,2009-10,72851
+Agriculture,2010-11,77327
+Agriculture,2011-12,78456
+Agriculture,2012-13,78811
+Agriculture,2013-14,79068
+Agriculture,2014-15,76149
+Agriculture,2015-16,74757
+Agriculture,2016-17,79068
+Agriculture,2017-18,78106
+Agriculture,2018-19,72146
+Agriculture,2019-20,70218
+Agriculture,2020-21,75495
+Agriculture,2021-22,76549
+Agriculture,2022-23,78782
+Agriculture,2023-24,75672
+
+Land Use - Land-Use Change and Forestry,1989-90,180172
+Land Use - Land-Use Change and Forestry,1990-91,160715
+Land Use - Land-Use Change and Forestry,1991-92,117752
+Land Use - Land-Use Change and Forestry,1992-93,96526
+Land Use - Land-Use Change and Forestry,1993-94,85922
+Land Use - Land-Use Change and Forestry,1994-95,64770
+Land Use - Land-Use Change and Forestry,1995-96,60292
+Land Use - Land-Use Change and Forestry,1996-97,46784
+Land Use - Land-Use Change and Forestry,1997-98,50635
+Land Use - Land-Use Change and Forestry,1998-99,65390
+Land Use - Land-Use Change and Forestry,1999-00,75389
+Land Use - Land-Use Change and Forestry,2000-01,82983
+Land Use - Land-Use Change and Forestry,2001-02,83606
+Land Use - Land-Use Change and Forestry,2002-03,82578
+Land Use - Land-Use Change and Forestry,2003-04,49595
+Land Use - Land-Use Change and Forestry,2004-05,76832
+Land Use - Land-Use Change and Forestry,2005-06,108151
+Land Use - Land-Use Change and Forestry,2006-07,82885
+Land Use - Land-Use Change and Forestry,2007-08,69731
+Land Use - Land-Use Change and Forestry,2008-09,62100
+Land Use - Land-Use Change and Forestry,2009-10,68474
+Land Use - Land-Use Change and Forestry,2010-11,35762
+Land Use - Land-Use Change and Forestry,2011-12,8596
+Land Use - Land-Use Change and Forestry,2012-13,18999
+Land Use - Land-Use Change and Forestry,2013-14,8263
+Land Use - Land-Use Change and Forestry,2014-15,-5075
+Land Use - Land-Use Change and Forestry,2015-16,-56180
+Land Use - Land-Use Change and Forestry,2016-17,-25944
+Land Use - Land-Use Change and Forestry,2017-18,-55741
+Land Use - Land-Use Change and Forestry,2018-19,-61164
+Land Use - Land-Use Change and Forestry,2019-20,-60310
+Land Use - Land-Use Change and Forestry,2020-21,-88738
+Land Use - Land-Use Change and Forestry,2021-22,-81167
+Land Use - Land-Use Change and Forestry,2022-23,-41067
+Land Use - Land-Use Change and Forestry,2023-24,-52144
+
+Waste,1989-90,23462
+Waste,1990-91,23386
+Waste,1991-92,23124
+Waste,1992-93,22945
+Waste,1993-94,22175
+Waste,1994-95,22107
+Waste,1995-96,20241
+Waste,1996-97,19933
+Waste,1997-98,19110
+Waste,1998-99,19236
+Waste,1999-00,18596
+Waste,2000-01,18900
+Waste,2001-02,18955
+Waste,2002-03,16340
+Waste,2003-04,15906
+Waste,2004-05,15759
+Waste,2005-06,15511
+Waste,2006-07,15908
+Waste,2007-08,16430
+Waste,2008-09,16257
+Waste,2009-10,16109
+Waste,2010-11,15653
+Waste,2011-12,14324
+Waste,2012-13,13868
+Waste,2013-14,13532
+Waste,2014-15,14079
+Waste,2015-16,14558
+Waste,2016-17,14358
+Waste,2017-18,13159
+Waste,2018-19,13295
+Waste,2019-20,13491
+Waste,2020-21,13758
+Waste,2021-22,14056
+Waste,2022-23,13869
+Waste,2023-24,13931
+
+Enteric fermentation,1989-90,75690
+Enteric fermentation,1990-91,75341
+Enteric fermentation,1991-92,72725
+Enteric fermentation,1992-93,70405
+Enteric fermentation,1993-94,69826
+Enteric fermentation,1994-95,67444
+Enteric fermentation,1995-96,68628
+Enteric fermentation,1996-97,68941
+Enteric fermentation,1997-98,68674
+Enteric fermentation,1998-99,68074
+Enteric fermentation,1999-00,70628
+Enteric fermentation,2000-01,68981
+Enteric fermentation,2001-02,68595
+Enteric fermentation,2002-03,65267
+Enteric fermentation,2003-04,67078
+Enteric fermentation,2004-05,66390
+Enteric fermentation,2005-06,65151
+Enteric fermentation,2006-07,63453
+Enteric fermentation,2007-08,61325
+Enteric fermentation,2008-09,60867
+Enteric fermentation,2009-10,58091
+Enteric fermentation,2010-11,61320
+Enteric fermentation,2011-12,62279
+Enteric fermentation,2012-13,62658
+Enteric fermentation,2013-14,62046
+Enteric fermentation,2014-15,59466
+Enteric fermentation,2015-16,58093
+Enteric fermentation,2016-17,60857
+Enteric fermentation,2017-18,60894
+Enteric fermentation,2018-19,56352
+Enteric fermentation,2019-20,54201
+Enteric fermentation,2020-21,57356
+Enteric fermentation,2021-22,57463
+Enteric fermentation,2022-23,59358
+Enteric fermentation,2023-24,58832
+
+Manure management,1989-90,3822
+Manure management,1990-91,3757
+Manure management,1991-92,3741
+Manure management,1992-93,3742
+Manure management,1993-94,3868
+Manure management,1994-95,3741
+Manure management,1995-96,3697
+Manure management,1996-97,3757
+Manure management,1997-98,3933
+Manure management,1998-99,3899
+Manure management,1999-00,4014
+Manure management,2000-01,4185
+Manure management,2001-02,4316
+Manure management,2002-03,4104
+Manure management,2003-04,4064
+Manure management,2004-05,4586
+Manure management,2005-06,4516
+Manure management,2006-07,4409
+Manure management,2007-08,4067
+Manure management,2008-09,4030
+Manure management,2009-10,4119
+Manure management,2010-11,4210
+Manure management,2011-12,4223
+Manure management,2012-13,4168
+Manure management,2013-14,4336
+Manure management,2014-15,4255
+Manure management,2015-16,4199
+Manure management,2016-17,4359
+Manure management,2017-18,4495
+Manure management,2018-19,4160
+Manure management,2019-20,4095
+Manure management,2020-21,4376
+Manure management,2021-22,4368
+Manure management,2022-23,4337
+Manure management,2023-24,4339

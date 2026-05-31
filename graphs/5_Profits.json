@@ -9,7 +9,7 @@
   "height": 420,
 
   "data": {
-    "url": "https://raw.githubusercontent.com/therealandrew11/FIT2179-Data-Visualization-2/refs/heads/main/data/5_Farm_Size_Line/Profits%20Farm.csv"
+    "url": "https://raw.githubusercontent.com/therealandrew11/FIT2179-Data-Visualization-2/refs/heads/main/data/5_Farm_Profits_Line/Profits%20Farm.csv"
   },
 
   "transform": [

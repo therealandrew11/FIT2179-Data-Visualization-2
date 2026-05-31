@@ -1,0 +1,83 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Consolidation of Northern Territory Beef Farms (1999–00 = 100)",
+  "width": 700,
+  "height": 400,
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/therealandrew11/FIT2179-Data-Visualization-2/refs/heads/main/data/8_NT_Farm_Size_Line/Farm%20Size%20extract.csv"
+  },
+
+  "transform": [
+    {
+      "calculate": "toNumber(replace(datum['Number of farms'], ',', ''))",
+      "as": "farms"
+    },
+    {
+      "calculate": "toNumber(replace(datum['Closing area operated'], ',', ''))",
+      "as": "area"
+    },
+
+    {
+      "calculate": "(datum.farms / 202) * 100",
+      "as": "farms_index"
+    },
+    {
+      "calculate": "(datum.area / 298310) * 100",
+      "as": "area_index"
+    },
+
+    {
+      "fold": ["farms_index", "area_index"],
+      "as": ["Metric", "Index"]
+    },
+
+    {
+      "calculate": "datum.Metric == 'farms_index' ? 'Number of Farms' : 'Average Farm Size'",
+      "as": "Series"
+    }
+  ],
+
+  "mark": {
+    "type": "line",
+    "point": true,
+    "strokeWidth": 3
+  },
+
+  "encoding": {
+    "x": {
+      "field": "Financial year",
+      "type": "ordinal",
+      "title": "Financial Year"
+    },
+
+    "y": {
+      "field": "Index",
+      "type": "quantitative",
+      "title": "Indexed Values from 1999-00 = 100"
+    },
+
+    "color": {
+      "field": "Series",
+      "type": "nominal",
+      "title": null,
+      "scale": {
+        "domain": ["Number of Farms", "Average Farm Size"],
+        "range": ["#1f77b4", "#d62728"]
+      }
+    },
+
+    "tooltip": [
+      {
+        "field": "Financial year"
+      },
+      {
+        "field": "Series"
+      },
+      {
+        "field": "Index",
+        "format": ".1f"
+      }
+    ]
+  }
+}
