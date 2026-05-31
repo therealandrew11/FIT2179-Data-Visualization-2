@@ -1,0 +1,52 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 700,
+  "height": 450,
+  "title": "Farm Scale vs Land Efficiency (Beef Farms, Australia)",
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/therealandrew11/FIT2179-Data-Visualization-2/refs/heads/main/data/7_Farm_Land_Efficiency/Farm%20Land%20Efficiency%20extract.csv"
+  },
+
+  "transform": [
+    {
+      "calculate": "toNumber(datum['Total cash receipts']) - toNumber(datum['Total cash costs'])",
+      "as": "profit"
+    },
+    {
+      "calculate": "datum.profit / toNumber(datum['Closing area operated'])",
+      "as": "profit_per_ha"
+    }
+  ],
+
+  "mark": {
+    "type": "point",
+    "filled": true,
+    "size": 90,
+    "opacity": 0.75
+  },
+
+  "encoding": {
+    "x": {
+      "field": "Closing area operated",
+      "type": "quantitative",
+      "title": "Farm Size (Closing Area Operated)"
+    },
+    "y": {
+      "field": "profit_per_ha",
+      "type": "quantitative",
+      "title": "Profit per Hectare"
+    },
+    "color": {
+      "field": "Financial year",
+      "type": "ordinal",
+      "legend": null
+    },
+    "tooltip": [
+      { "field": "Financial year" },
+      { "field": "Closing area operated" },
+      { "field": "profit", "type": "quantitative" },
+      { "field": "profit_per_ha", "type": "quantitative", "format": ".2f" }
+    ]
+  }
+}
