@@ -1,0 +1,87 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/therealandrew11/FIT2179-Data-Visualization-2/refs/heads/main/data/9_Emissions_Changes_Line/Emissions%20extract.csv"
+  },
+
+  "transform": [
+    {
+      "calculate": "trim(datum.Category)",
+      "as": "CategoryClean"
+    },
+    {
+      "calculate": "datum.CategoryClean === 'Land Use - Land-Use Change and Forestry' ? 'Land use' : datum.CategoryClean",
+      "as": "CategoryLabel"
+    },
+    {
+      "window": [
+        {
+          "op": "first_value",
+          "field": "Value",
+          "as": "BaseValue"
+        }
+      ],
+      "groupby": ["CategoryClean"],
+      "sort": [{ "field": "Year", "order": "ascending" }],
+      "frame": [null, null]
+    },
+    {
+      "calculate": "datum.Value / datum.BaseValue * 100",
+      "as": "Index"
+    }
+  ],
+
+  "mark": {
+    "type": "line",
+    "strokeWidth": 2
+  },
+
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "title": "Financial Year"
+    },
+    "y": {
+      "field": "Index",
+      "type": "quantitative",
+      "title": "Indexed Emissions (1989–90 = 100)"
+    },
+
+    "color": {
+      "field": "CategoryLabel",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Enteric fermentation",
+          "Manure management",
+          "Energy",
+          "Industrial Processes",
+          "Agriculture",
+          "Land use",
+          "Waste"
+        ],
+        "range": [
+          "#d62728",
+          "#ff7f0e",
+          "#d3d3d3",
+          "#d3d3d3",
+          "#d3d3d3",
+          "#d3d3d3",
+          "#d3d3d3"
+        ]
+      },
+      "legend": {
+        "title": "Category"
+      }
+    },
+
+    "tooltip": [
+      { "field": "CategoryLabel", "title": "Category" },
+      { "field": "Year" },
+      { "field": "Value" },
+      { "field": "Index", "format": ".1f" }
+    ]
+  }
+}
